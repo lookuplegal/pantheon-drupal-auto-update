@@ -1,0 +1,7 @@
+[
+	{
+		"CREATE_BACKUPS": 1,
+		"RECREATE_MULTIDEV": 1,
+		"LIVE_URL": 0
+	}
+]
