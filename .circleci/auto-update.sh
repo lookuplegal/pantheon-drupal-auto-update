@@ -222,9 +222,9 @@ else
     echo -e "\nSending a message to the ${SLACK_CHANNEL} Slack channel"
     curl -X POST --data "payload={\"channel\": \"${SLACK_CHANNEL}\",${SLACK_ATTACHEMENTS}, \"username\": \"${SLACK_USERNAME}\", \"text\": \"${SLACK_MESSAGE}\"}" $SLACK_HOOK_URL
 
-    curl -u ${CIRCLE_TOKEN}: \
+    curl -u ${CIRCLE_API_USER_TOKEN}: \
          -d build_parameters[CIRCLE_JOB]=deploy_updates \
-         https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH >/dev/null
+         https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH
 
     # Deploy updates
         echo -e "\nStarting the deploy job via API for $SITE_NAME... at url https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH ... ${CIRCLE_TOKEN}"
