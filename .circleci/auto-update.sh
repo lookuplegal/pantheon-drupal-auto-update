@@ -227,12 +227,6 @@ else
         curl --user ${CIRCLE_TOKEN}: \
                     --data build_parameters[CIRCLE_JOB]=deploy_updates \
                     --data build_parameters[SITE_NAME]=$SITE_NAME \
-                    # --data build_parameters[VISUAL_REGRESSION_HTML_REPORT_URL]=$VISUAL_REGRESSION_HTML_REPORT_URL \
-                    # --data build_parameters[LIGHTHOUSE_SCORE]=$LIGHTHOUSE_SCORE \
-                    # --data build_parameters[LIGHTHOUSE_HTML_REPORT_URL]=$LIGHTHOUSE_HTML_REPORT_URL \
-                    # --data build_parameters[LIGHTHOUSE_PRODUCTION_SCORE]=$LIGHTHOUSE_PRODUCTION_SCORE \
-                    # --data build_parameters[LIGHTHOUSE_PRODUCTION_HTML_REPORT_URL]=$LIGHTHOUSE_PRODUCTION_HTML_REPORT_URL \
-                    # --data build_parameters[LIGHTHOUSE_ACCEPTABLE_THRESHOLD]=$LIGHTHOUSE_ACCEPTABLE_THRESHOLD \
                     --data build_parameters[SITE_UUID]=$SITE_UUID.$MULTIDEV \
                     --data build_parameters[CREATE_BACKUPS]=$CREATE_BACKUPS \
                     --data build_parameters[RECREATE_MULTIDEV]=$RECREATE_MULTIDEV \
