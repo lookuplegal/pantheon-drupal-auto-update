@@ -233,7 +233,7 @@ else
                     # --data build_parameters[LIGHTHOUSE_PRODUCTION_SCORE]=$LIGHTHOUSE_PRODUCTION_SCORE \
                     # --data build_parameters[LIGHTHOUSE_PRODUCTION_HTML_REPORT_URL]=$LIGHTHOUSE_PRODUCTION_HTML_REPORT_URL \
                     # --data build_parameters[LIGHTHOUSE_ACCEPTABLE_THRESHOLD]=$LIGHTHOUSE_ACCEPTABLE_THRESHOLD \
-                    --data build_parameters[SITE_UUID]=$SITE_UUID \
+                    --data build_parameters[SITE_UUID]=$SITE_UUID.$MULTIDEV \
                     --data build_parameters[CREATE_BACKUPS]=$CREATE_BACKUPS \
                     --data build_parameters[RECREATE_MULTIDEV]=$RECREATE_MULTIDEV \
                     --data build_parameters[LIVE_URL]=$LIVE_URL \
