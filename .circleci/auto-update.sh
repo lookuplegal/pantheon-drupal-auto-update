@@ -223,11 +223,11 @@ else
     curl -X POST --data "payload={\"channel\": \"${SLACK_CHANNEL}\",${SLACK_ATTACHEMENTS}, \"username\": \"${SLACK_USERNAME}\", \"text\": \"${SLACK_MESSAGE}\"}" $SLACK_HOOK_URL
 
     # Deploy updates
-        echo -e "\nStarting the deploy job via API for $SITE_NAME..."
+        echo -e "\nStarting the deploy job via API for $SITE_NAME... at url https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH"
         curl --user ${CIRCLE_TOKEN}: \
                     --data build_parameters[CIRCLE_JOB]=deploy_updates \
                     --data build_parameters[SITE_NAME]=$SITE_NAME \
-                    --data build_parameters[SITE_UUID]=$SITE_UUID.$MULTIDEV \
+                    --data build_parameters[SITE_UUID]=$SITE_UUID \
                     --data build_parameters[CREATE_BACKUPS]=$CREATE_BACKUPS \
                     --data build_parameters[RECREATE_MULTIDEV]=$RECREATE_MULTIDEV \
                     --data build_parameters[LIVE_URL]=$LIVE_URL \
