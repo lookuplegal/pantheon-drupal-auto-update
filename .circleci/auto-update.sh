@@ -222,8 +222,12 @@ else
     echo -e "\nSending a message to the ${SLACK_CHANNEL} Slack channel"
     curl -X POST --data "payload={\"channel\": \"${SLACK_CHANNEL}\",${SLACK_ATTACHEMENTS}, \"username\": \"${SLACK_USERNAME}\", \"text\": \"${SLACK_MESSAGE}\"}" $SLACK_HOOK_URL
 
+    curl -u ${CIRCLE_TOKEN}: \
+         -d build_parameters[CIRCLE_JOB]=deploy_updates \
+         https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH
+
     # Deploy updates
-        echo -e "\nStarting the deploy job via API for $SITE_NAME... at url https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH"
+        echo -e "\nStarting the deploy job via API for $SITE_NAME... at url https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH ... ${CIRCLE_TOKEN}"
         curl --user ${CIRCLE_TOKEN}: \
                     --data build_parameters[CIRCLE_JOB]=deploy_updates \
                     --data build_parameters[SITE_NAME]=$SITE_NAME \
@@ -232,7 +236,7 @@ else
                     --data build_parameters[RECREATE_MULTIDEV]=$RECREATE_MULTIDEV \
                     --data build_parameters[LIVE_URL]=$LIVE_URL \
                     --data revision=$CIRCLE_SHA1 \
-                    https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH
+                    https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH  >/dev/null
 
         #curl --user ${CIRCLE_TOKEN}: \
                     #--data build_parameters[CIRCLE_JOB]=deploy_updates \
