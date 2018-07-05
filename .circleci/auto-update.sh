@@ -224,7 +224,7 @@ else
 
     curl -u ${CIRCLE_TOKEN}: \
          -d build_parameters[CIRCLE_JOB]=deploy_updates \
-         https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH
+         https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH >/dev/null
 
     # Deploy updates
         echo -e "\nStarting the deploy job via API for $SITE_NAME... at url https://circleci.com/api/v1.1/project/github/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/tree/$CIRCLE_BRANCH ... ${CIRCLE_TOKEN}"
