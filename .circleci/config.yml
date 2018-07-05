@@ -52,22 +52,7 @@ jobs:
             - run:
                 name: check for updates
                 command: ./.circleci/auto-update.sh
-                no_output_timeout: 30m    
-
-            # VISUAL REGRESSION TESTS WILL NOT WORK ANYWAYS BECAUSE OF SOLR INDEX not being indexed on update-dr
-            # - run:
-            #     name: run visual regression tests
-            #     command: ./.circleci/visual-regression-test.sh
-            #     no_output_timeout: 30m
-
-            # - run:
-            #     name: deploy updates
-            #     command: ./.circleci/deploy-updates.sh
-            #     no_output_timeout: 30m
-
-            # - store_artifacts:
-            #     path: /tmp/artifacts
-            #     destination: artifacts    
+                no_output_timeout: 30m
             
     check_for_updates:
         <<: *defaults
@@ -102,51 +87,6 @@ jobs:
             - store_artifacts:
                 path: /tmp/artifacts
                 destination: artifacts
-
-    ## Commenting out commands that won't be run            
-    # lighthouse_performance_test:
-    #     <<: *defaults
-    #     docker:
-    #       - image: ataylorme/docker-node-advanced-wordpress-on-pantheon:lighthouse
-    #     steps:
-    #         - checkout
-
-    #         - run:
-    #             name: declare environment variables
-    #             command: ./.circleci/set-up-globals.sh
-
-    #         - run:
-    #             name: run lighthouse tests
-    #             command: ./.circleci/lighthouse-performance-test.sh
-    #             no_output_timeout: 30m
-
-    #         - store_artifacts:
-    #             path: /tmp/artifacts
-    #             destination: artifacts
-
-    ## Commenting out commands that won't be run
-    # behat_test:
-    #     <<: *defaults
-    #     steps:
-    #         - checkout
-
-    #         - restore_cache:
-    #             keys:
-    #                 - composer-cache
-
-    #         - run:
-    #             name: declare environment variables
-    #             command: ./.circleci/set-up-globals.sh
-
-    #         - run:
-    #             name: run behat tests
-    #             command: ./.circleci/behat-test.sh
-    #             no_output_timeout: 30m
-
-    #         - save_cache:
-    #             key: composer-cache
-    #             paths:
-    #                 - $HOME/.composer/cache
     
     deploy_updates:
         <<: *defaults
